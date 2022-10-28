@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d1902e8d-60ee-4ae2-ad0d-1d6bf0ba7185" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ReadMe.txt" afterDir="false" />
+    <list default="true" id="d1902e8d-60ee-4ae2-ad0d-1d6bf0ba7185" name="Changes" comment="init kevtest">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReadMe.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ReadMe.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="kevtest" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,8 +53,17 @@
       <option name="presentableId" value="Default" />
       <updated>1666970483243</updated>
       <workItem from="1666970572916" duration="415000" />
-      <workItem from="1666971014950" duration="814000" />
+      <workItem from="1666971014950" duration="2047000" />
+      <workItem from="1666978990594" duration="1021000" />
     </task>
+    <task id="LOCAL-00001" summary="init kevtest">
+      <created>1666971988546</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1666971988546</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -70,5 +79,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init kevtest" />
+    <option name="LAST_COMMIT_MESSAGE" value="init kevtest" />
   </component>
 </project>
