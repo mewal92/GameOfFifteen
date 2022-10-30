@@ -16,21 +16,31 @@ import java.io.IOException;
         JButton []buttons;
         JButton emptyButton;
         JCheckBox checkBox;
+        JPanel bottomPanel;
 
         puzzleGraphics(){
             frame = new JFrame();
             gamePanel = new JPanel();
+            bottomPanel = new JPanel();
             buttons= new JButton[16];
             newGame= new JButton("Nytt Spel");
             checkBox = new JCheckBox("Test mode");
+            emptyButton = new JButton("");
 
             try {
                 img = ImageIO.read(new File("bk.jpg"));
                 frame.setContentPane(new JLabel(new ImageIcon(img)));
                 frame.setLayout(new FlowLayout());
                 frame.getContentPane().add(gamePanel);
-               frame.getContentPane().add(newGame);
-                frame.getContentPane().add(checkBox);
+                frame.getContentPane().add(bottomPanel);
+
+                bottomPanel.setLayout(new FlowLayout());
+                bottomPanel.setOpaque(true);
+                bottomPanel.setBackground(new Color(0,0,0,0));
+               bottomPanel.add(newGame);
+                bottomPanel.add(checkBox);
+                checkBox.setOpaque(true);
+                checkBox.setBackground(new Color(0,0,0,0));
 
                     gamePanel.setBorder(new MetalBorders.InternalFrameBorder());
                     gamePanel.setBorder(new SoftBevelBorder(1, Color.blue, Color.gray));
@@ -43,6 +53,7 @@ import java.io.IOException;
                     buttons[i].setSize(50,50);
                     buttons[i].setFont(new Font("Tahoma", Font.PLAIN, 25));
                     gamePanel.add(buttons[i]);
+                    gamePanel.add(emptyButton);
                 }
                     frame.setTitle("Game of 15");
                     frame.setVisible(true);
