@@ -84,7 +84,6 @@ public class puzzleGraphics extends JFrame implements ActionListener {
 
             int index = 0;
             int count = 0;
-            //Index på brickan där man har tryckt
             for (int i = 0; i < buttons.length; i++) {
                 count = buttonOrder[i];
                 String s = Integer.toString(count);
@@ -95,35 +94,22 @@ public class puzzleGraphics extends JFrame implements ActionListener {
             }
             int index2 = index;
 
-            // den här if statement är för att checka om den tomma brickan är åt vänster sidan om den nuvarande index
-        /* vi checkar även om man har klickat i den vänstra hörnan, i detta fallet
-         kan vi inte checka index -1*/
             if (index != 0 && index != 4 && index != 8 && index != 12 && buttonOrder[index - 1] == 0) {
                 buttonOrder[index - 1] = count;
                 buttonOrder[index2] = 0;
                 getButtons();
             }
-         /* här kontrollerar vi index + 1 om den är tomma brickan samt om den är i höger sidan då
-         behöver vi inte titta på tomma sidan i index+1 då det finns ingen number i höger sida efter*/
+
             else if (index != 3 && index != 7 && index != 11 && index != 15 && buttonOrder[index + 1] == 0) {
                 buttonOrder[index + 1] = count;
                 buttonOrder[index2] = 0;
                 getButtons();
 
-
-
-
-
-        /* här kontrollerar vi nummer ovanför, samt kontrollerar vi om index är
-        out of boundaries*/
             } else if ((index - 4 >= 0) && buttonOrder[index - 4] == 0) {
                 buttonOrder[index - 4] = count;
                 buttonOrder[index2] = 0;
                 getButtons();
 
-
-                /* här kontrollerar vi nummer under, samt kontrollerar vi om index är
-         out of boundaries*/
             } else if ((index + 4 < 17) && buttonOrder[index + 4] == 0) {
                 buttonOrder[index + 4] = count;
                 buttonOrder[index2] = 0;
