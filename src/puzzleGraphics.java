@@ -116,7 +116,7 @@ public class puzzleGraphics extends JFrame implements ActionListener {
 
         /* här kontrollerar vi nummer ovanför, samt kontrollerar vi om index är
         out of boundaries*/
-            } else if ((index - 4 >= 0) && buttonOrder[index -4] == 0) {
+            } else if ((index - 4 >= 0) && buttonOrder[index - 4] == 0) {
                 buttonOrder[index - 4] = count;
                 buttonOrder[index2] = 0;
                 getButtons();
@@ -129,8 +129,10 @@ public class puzzleGraphics extends JFrame implements ActionListener {
                 buttonOrder[index2] = 0;
                 getButtons();
             }
-
-
+            int[] winArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0};
+            if (Arrays.compare(winArray, buttonOrder) == 0){
+                JOptionPane.showMessageDialog(null, "win!");
+            }
         }
     }
 
