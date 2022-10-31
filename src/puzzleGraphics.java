@@ -17,7 +17,7 @@ public class puzzleGraphics extends JFrame implements ActionListener {
     JFrame frame;
     JButton newGame;
     JButton[] buttons;
-    JCheckBox checkBox;
+   JToggleButton testMode;
     JPanel bottomPanel;
     Shuffle shuffle = new Shuffle();
     int[] buttonOrder;
@@ -28,10 +28,11 @@ public class puzzleGraphics extends JFrame implements ActionListener {
         gamePanel = new JPanel();
         bottomPanel = new JPanel();
         buttons = new JButton[16];
+        testMode = new JToggleButton("Test mode");
         newGame = new JButton("Nytt Spel");
-        checkBox = new JCheckBox("Test mode");
         newGame.addActionListener(this);
-        checkBox.addActionListener(this);
+        testMode.addActionListener(this);
+
 
         try {
             img = ImageIO.read(new File("bk.jpg"));
@@ -44,10 +45,8 @@ public class puzzleGraphics extends JFrame implements ActionListener {
             bottomPanel.setOpaque(true);
             bottomPanel.setBackground(new Color(0, 0, 0, 0));
             bottomPanel.add(newGame);
-            bottomPanel.add(checkBox);
+            bottomPanel.add(testMode);
 
-            checkBox.setOpaque(true);
-            checkBox.setBackground(new Color(0, 0, 0, 0));
 
             gamePanel.setBorder(new MetalBorders.InternalFrameBorder());
             gamePanel.setBorder(new SoftBevelBorder(1, Color.blue, Color.gray));
@@ -57,52 +56,50 @@ public class puzzleGraphics extends JFrame implements ActionListener {
             getButtons();
             gamePanel.add(buttons[0]);
 
+        } catch (IOException exp) {
+            exp.printStackTrace();
+        }
+    }
+        private void setFrame() {
             frame.setTitle("Game of 15");
             frame.setVisible(true);
             frame.setSize(460, 350);
             frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
-
-        } catch (IOException exp) {
-            exp.printStackTrace();
         }
-    }
+
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == newGame) {
+    public void actionPerformed(ActionEvent ae) {
+        String action = ae.getActionCommand();
+        if (action.equals("Nytt Spel")) {
             gamePanel.removeAll();
-            if (!checkBox.isSelected()) {
-                buttonOrder = shuffle.shuffle(buttonOrder);
-                getButtons();
-            }
-            else {
-                int[] testArray = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,0,15};
-                buttonOrder = testArray;
-                getButtons();
-            }
+            buttonOrder = shuffle.shuffle(buttonOrder);
+            getButtons();
+        }
+        if (action.equals("Test mode")) {
+            gamePanel.removeAll();
+            int[] testArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 0, 15};
+            buttonOrder = testArray;
+            getButtons();
+
         }
     }
-
     private void getButtons() {
         for (int i = 0; i < buttons.length; i++) {
             if (i == 0) {
                 buttons[i] = new JButton("");
-                buttons[i].setSize(50, 50);
-                buttons[i].setBackground(Color.darkGray);
+                buttons[i].setSize(65, 70);
                 buttons[i].setFont(new Font("Tahoma", Font.PLAIN, 25));
             } else
                 buttons[i] = new JButton(String.valueOf(i));
-            buttons[i].setSize(50, 50);
+            buttons[i].setSize(65, 70);
             buttons[i].setFont(new Font("Tahoma", Font.PLAIN, 25));
         }
         for (int i = 0; i < buttonOrder.length; i++) {
             gamePanel.add(buttons[buttonOrder[i]]);
         }
-        frame.setTitle("Game of 15");
-        frame.setVisible(true);
-        frame.setSize(460, 350);
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
+        setFrame();
+
     }
 }
