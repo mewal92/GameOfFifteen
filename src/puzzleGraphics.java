@@ -75,24 +75,11 @@ public class puzzleGraphics extends JFrame implements ActionListener {
             if (!checkBox.isSelected()) {
                 buttonOrder = shuffle.shuffle(buttonOrder);
                 getButtons();
-
-                frame.setTitle("Game of 15");
-                frame.setVisible(true);
-                frame.setSize(460, 350);
-                frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-                frame.setLocationRelativeTo(null);
             }
             else {
                 int[] testArray = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,0,15};
                 buttonOrder = testArray;
-
                 getButtons();
-
-                frame.setTitle("Game of 15");
-                frame.setVisible(true);
-                frame.setSize(460, 350);
-                frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-                frame.setLocationRelativeTo(null);
             }
         }
     }
@@ -112,5 +99,10 @@ public class puzzleGraphics extends JFrame implements ActionListener {
         for (int i = 0; i < buttonOrder.length; i++) {
             gamePanel.add(buttons[buttonOrder[i]]);
         }
+        frame.setTitle("Game of 15");
+        frame.setVisible(true);
+        frame.setSize(460, 350);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
     }
 }
