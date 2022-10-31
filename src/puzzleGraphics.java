@@ -16,7 +16,6 @@ public class puzzleGraphics extends JFrame implements ActionListener {
     JFrame frame;
     JButton newGame;
     JButton[] buttons;
-    JButton emptyButton;
     JCheckBox checkBox;
     JPanel bottomPanel;
     Shuffle shuffle = new Shuffle();
@@ -45,6 +44,7 @@ public class puzzleGraphics extends JFrame implements ActionListener {
             bottomPanel.setBackground(new Color(0, 0, 0, 0));
             bottomPanel.add(newGame);
             bottomPanel.add(checkBox);
+
             checkBox.setOpaque(true);
             checkBox.setBackground(new Color(0, 0, 0, 0));
 
@@ -53,20 +53,7 @@ public class puzzleGraphics extends JFrame implements ActionListener {
             gamePanel.setSize(400, 400);
             gamePanel.setLayout(new GridLayout(4, 4));
 
-            //läser in knappar från 1-15 när man startar programmet
-            for (int i = 0; i < buttons.length; i++) {
-                if (i == 0) {
-                    buttons[i] = new JButton("");
-                    buttons[i].setSize(50, 50);
-                    buttons[i].setBackground(Color.darkGray);
-                } else
-                    buttons[i] = new JButton(String.valueOf(i));
-                buttons[i].setSize(50, 50);
-                buttons[i].setFont(new Font("Tahoma", Font.PLAIN, 25));
-            }
-            for (int i = 1; i < buttonOrder.length; i++) {
-                gamePanel.add(buttons[buttonOrder[i]]);
-            }
+            getButtons();
             gamePanel.add(buttons[0]);
 
             frame.setTitle("Game of 15");
@@ -75,11 +62,9 @@ public class puzzleGraphics extends JFrame implements ActionListener {
             frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
 
-
         } catch (IOException exp) {
             exp.printStackTrace();
         }
-
     }
 
     @Override
@@ -88,43 +73,7 @@ public class puzzleGraphics extends JFrame implements ActionListener {
             gamePanel.removeAll();
             if (!checkBox.isSelected()) {
                 buttonOrder = shuffle.shuffle(buttonOrder);
-
-                for (int i = 0; i < buttons.length; i++) {
-                    if (i == 0) {
-                        buttons[i] = new JButton("");
-                        buttons[i].setSize(50, 50);
-                        buttons[i].setBackground(Color.darkGray);
-                    } else
-                        buttons[i] = new JButton(String.valueOf(i));
-                    buttons[i].setSize(50, 50);
-                    buttons[i].setFont(new Font("Tahoma", Font.PLAIN, 25));
-                }
-                for (int i = 0; i < buttonOrder.length; i++) {
-                    gamePanel.add(buttons[buttonOrder[i]]);
-                }
-
-                frame.setTitle("Game of 15");
-                frame.setVisible(true);
-                frame.setSize(460, 350);
-                frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-                frame.setLocationRelativeTo(null);
-            }
-            if (checkBox.isSelected()) {
-                for (int i = 0; i < buttons.length; i++) {
-                    if (i == 0) {
-                        buttons[i] = new JButton("");
-                        buttons[i].setSize(50, 50);
-                        buttons[i].setBackground(Color.darkGray);
-                    } else
-                        buttons[i] = new JButton(String.valueOf(i));
-                    buttons[i].setSize(50, 50);
-                    buttons[i].setFont(new Font("Tahoma", Font.PLAIN, 25));
-                }
-                for (int i = 1; i < buttonOrder.length -1; i++) {
-                    gamePanel.add(buttons[i]);
-                }
-                gamePanel.add(buttons[0]);
-                gamePanel.add(buttons[15]);
+                getButtons();
 
                 frame.setTitle("Game of 15");
                 frame.setVisible(true);
@@ -134,5 +83,21 @@ public class puzzleGraphics extends JFrame implements ActionListener {
             }
         }
     }
-}
 
+    private void getButtons() {
+        for (int i = 0; i < buttons.length; i++) {
+            if (i == 0) {
+                buttons[i] = new JButton("");
+                buttons[i].setSize(50, 50);
+                buttons[i].setBackground(Color.darkGray);
+                buttons[i].setFont(new Font("Tahoma", Font.PLAIN, 25));
+            } else
+                buttons[i] = new JButton(String.valueOf(i));
+            buttons[i].setSize(50, 50);
+            buttons[i].setFont(new Font("Tahoma", Font.PLAIN, 25));
+        }
+        for (int i = 0; i < buttonOrder.length; i++) {
+            gamePanel.add(buttons[buttonOrder[i]]);
+        }
+    }
+}
