@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class puzzleGraphics extends JFrame implements ActionListener {
 
@@ -73,6 +74,18 @@ public class puzzleGraphics extends JFrame implements ActionListener {
             gamePanel.removeAll();
             if (!checkBox.isSelected()) {
                 buttonOrder = shuffle.shuffle(buttonOrder);
+                getButtons();
+
+                frame.setTitle("Game of 15");
+                frame.setVisible(true);
+                frame.setSize(460, 350);
+                frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                frame.setLocationRelativeTo(null);
+            }
+            else {
+                int[] testArray = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,0,15};
+                buttonOrder = testArray;
+
                 getButtons();
 
                 frame.setTitle("Game of 15");
