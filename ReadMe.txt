@@ -19,3 +19,7 @@ Psuedo code:
     isåfall skip och läs nästa int (för att slippa dubblerade nummer..)
 
     - metod som startar en testversion för redovisningen
+
+    - rörelse av knappar
+
+    - vinst-läge
