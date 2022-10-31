@@ -64,16 +64,16 @@ public class puzzleGraphics extends JFrame implements ActionListener {
                 buttons[i].setSize(50, 50);
                 buttons[i].setFont(new Font("Tahoma", Font.PLAIN, 25));
             }
-            for (int i = 0; i < buttonOrder.length; i++) {
+            for (int i = 1; i < buttonOrder.length; i++) {
                 gamePanel.add(buttons[buttonOrder[i]]);
             }
+            gamePanel.add(buttons[0]);
 
             frame.setTitle("Game of 15");
             frame.setVisible(true);
             frame.setSize(460, 350);
             frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
-            //setLocationRelativeTo(null);
 
 
         } catch (IOException exp) {
@@ -86,31 +86,52 @@ public class puzzleGraphics extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == newGame) {
             gamePanel.removeAll();
-            buttonOrder = shuffle.shuffle(buttonOrder);
+            if (!checkBox.isSelected()) {
+                buttonOrder = shuffle.shuffle(buttonOrder);
 
-            for (int i = 0; i < buttons.length; i++) {
-                if (i == 0) {
-                    buttons[i] = new JButton("");
+                for (int i = 0; i < buttons.length; i++) {
+                    if (i == 0) {
+                        buttons[i] = new JButton("");
+                        buttons[i].setSize(50, 50);
+                        buttons[i].setBackground(Color.darkGray);
+                    } else
+                        buttons[i] = new JButton(String.valueOf(i));
                     buttons[i].setSize(50, 50);
-                    buttons[i].setBackground(Color.darkGray);
-                } else
-                    buttons[i] = new JButton(String.valueOf(i));
-                buttons[i].setSize(50, 50);
-                buttons[i].setFont(new Font("Tahoma", Font.PLAIN, 25));
-            }
-            for (int i = 0; i < buttonOrder.length; i++) {
-                gamePanel.add(buttons[buttonOrder[i]]);
-            }
+                    buttons[i].setFont(new Font("Tahoma", Font.PLAIN, 25));
+                }
+                for (int i = 0; i < buttonOrder.length; i++) {
+                    gamePanel.add(buttons[buttonOrder[i]]);
+                }
 
-            frame.setTitle("Game of 15");
-            frame.setVisible(true);
-            frame.setSize(460, 350);
-            frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-            frame.setLocationRelativeTo(null);
-            //setLocationRelativeTo(null);
-        }
-        if (checkBox.isSelected()) {
-            //startTestMode();
+                frame.setTitle("Game of 15");
+                frame.setVisible(true);
+                frame.setSize(460, 350);
+                frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                frame.setLocationRelativeTo(null);
+            }
+            if (checkBox.isSelected()) {
+                for (int i = 0; i < buttons.length; i++) {
+                    if (i == 0) {
+                        buttons[i] = new JButton("");
+                        buttons[i].setSize(50, 50);
+                        buttons[i].setBackground(Color.darkGray);
+                    } else
+                        buttons[i] = new JButton(String.valueOf(i));
+                    buttons[i].setSize(50, 50);
+                    buttons[i].setFont(new Font("Tahoma", Font.PLAIN, 25));
+                }
+                for (int i = 1; i < buttonOrder.length -1; i++) {
+                    gamePanel.add(buttons[i]);
+                }
+                gamePanel.add(buttons[0]);
+                gamePanel.add(buttons[15]);
+
+                frame.setTitle("Game of 15");
+                frame.setVisible(true);
+                frame.setSize(460, 350);
+                frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                frame.setLocationRelativeTo(null);
+            }
         }
     }
 }
