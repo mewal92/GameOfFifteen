@@ -55,13 +55,6 @@ public class puzzleGraphics extends JFrame implements ActionListener {
             gamePanel.setLayout(new GridLayout(4, 4));
 
             getButtons();
-            gamePanel.add(buttons[0]);
-
-            frame.setTitle("Game of 15");
-            frame.setVisible(true);
-            frame.setSize(460, 350);
-            frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-            frame.setLocationRelativeTo(null);
 
         } catch (IOException exp) {
             exp.printStackTrace();
@@ -75,16 +68,74 @@ public class puzzleGraphics extends JFrame implements ActionListener {
             if (!checkBox.isSelected()) {
                 buttonOrder = shuffle.shuffle(buttonOrder);
                 getButtons();
-            }
-            else {
-                int[] testArray = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,0,15};
+            } else {
+                int[] testArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 0, 15};
                 buttonOrder = testArray;
                 getButtons();
             }
         }
+        if (e.getSource() == checkBox) {
+            return;
+        }
+        JButton source = new JButton();
+        if (e.getSource() != newGame && e.getSource() != checkBox) {
+            source = (JButton) e.getSource();
+
+
+            int index = 0;
+            int count = 0;
+            //Index på brickan där man har tryckt
+            for (int i = 0; i < buttons.length; i++) {
+                count = buttonOrder[i];
+                String s = Integer.toString(count);
+                if (source.getText().equals(s)) {
+                    index = i;
+                    break;
+                }
+            }
+            int index2 = index;
+
+            // den här if statement är för att checka om den tomma brickan är åt vänster sidan om den nuvarande index
+        /* vi checkar även om man har klickat i den vänstra hörnan, i detta fallet
+         kan vi inte checka index -1*/
+            if (index != 0 && index != 4 && index != 8 && index != 12 && buttonOrder[index - 1] == 0) {
+                buttonOrder[index - 1] = count;
+                buttonOrder[index2] = 0;
+                getButtons();
+            }
+         /* här kontrollerar vi index + 1 om den är tomma brickan samt om den är i höger sidan då
+         behöver vi inte titta på tomma sidan i index+1 då det finns ingen number i höger sida efter*/
+            else if (index != 3 && index != 7 && index != 11 && index != 15 && buttonOrder[index + 1] == 0) {
+                buttonOrder[index + 1] = count;
+                buttonOrder[index2] = 0;
+                getButtons();
+
+
+
+
+
+        /* här kontrollerar vi nummer ovanför, samt kontrollerar vi om index är
+        out of boundaries*/
+            } else if ((index - 4 >= 0) && buttonOrder[index -4] == 0) {
+                buttonOrder[index - 4] = count;
+                buttonOrder[index2] = 0;
+                getButtons();
+
+
+                /* här kontrollerar vi nummer under, samt kontrollerar vi om index är
+         out of boundaries*/
+            } else if ((index + 4 < 17) && buttonOrder[index + 4] == 0) {
+                buttonOrder[index + 4] = count;
+                buttonOrder[index2] = 0;
+                getButtons();
+            }
+
+
+        }
     }
 
     private void getButtons() {
+        gamePanel.removeAll();
         for (int i = 0; i < buttons.length; i++) {
             if (i == 0) {
                 buttons[i] = new JButton("");
@@ -95,6 +146,7 @@ public class puzzleGraphics extends JFrame implements ActionListener {
                 buttons[i] = new JButton(String.valueOf(i));
             buttons[i].setSize(50, 50);
             buttons[i].setFont(new Font("Tahoma", Font.PLAIN, 25));
+            buttons[i].addActionListener(this);
         }
         for (int i = 0; i < buttonOrder.length; i++) {
             gamePanel.add(buttons[buttonOrder[i]]);
