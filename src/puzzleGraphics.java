@@ -17,7 +17,7 @@ public class puzzleGraphics extends JFrame implements ActionListener {
     JFrame frame;
     JButton newGame;
     JButton[] buttons;
-    JCheckBox checkBox;
+    JToggleButton testMode;
     JPanel bottomPanel;
     Shuffle shuffle = new Shuffle();
     int[] buttonOrder;
@@ -29,9 +29,9 @@ public class puzzleGraphics extends JFrame implements ActionListener {
         bottomPanel = new JPanel();
         buttons = new JButton[16];
         newGame = new JButton("Nytt Spel");
-        checkBox = new JCheckBox("Test mode");
+        testMode= new JCheckBox("Test mode");
         newGame.addActionListener(this);
-        checkBox.addActionListener(this);
+        testMode.addActionListener(this);
 
         try {
             img = ImageIO.read(new File("bk.jpg"));
@@ -44,10 +44,7 @@ public class puzzleGraphics extends JFrame implements ActionListener {
             bottomPanel.setOpaque(true);
             bottomPanel.setBackground(new Color(0, 0, 0, 0));
             bottomPanel.add(newGame);
-            bottomPanel.add(checkBox);
-
-            checkBox.setOpaque(true);
-            checkBox.setBackground(new Color(0, 0, 0, 0));
+            bottomPanel.add(testMode);
 
             gamePanel.setBorder(new MetalBorders.InternalFrameBorder());
             gamePanel.setBorder(new SoftBevelBorder(1, Color.blue, Color.gray));
@@ -62,24 +59,22 @@ public class puzzleGraphics extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == newGame) {
+    public void actionPerformed(ActionEvent ae) {
+        String action = ae.getActionCommand();
+        if (action == "Nytt Spel") {
             gamePanel.removeAll();
-            if (!checkBox.isSelected()) {
                 buttonOrder = shuffle.shuffle(buttonOrder);
                 getButtons();
-            } else {
+            }else if (action == "Test mode"){
+            gamePanel.removeAll();
                 int[] testArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 0, 15};
                 buttonOrder = testArray;
                 getButtons();
             }
-        }
-        if (e.getSource() == checkBox) {
-            return;
-        }
-        JButton source = new JButton();
-        if (e.getSource() != newGame && e.getSource() != checkBox) {
-            source = (JButton) e.getSource();
+
+        JButton source;
+        if (action != "Nytt Spel" && action != "Test mode") {
+            source = (JButton) ae.getSource();
 
 
             int index = 0;
@@ -117,7 +112,7 @@ public class puzzleGraphics extends JFrame implements ActionListener {
             }
             int[] winArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0};
             if (Arrays.compare(winArray, buttonOrder) == 0){
-                JOptionPane.showMessageDialog(null, "win!");
+                JOptionPane.showMessageDialog(null, "Grattis, du vann!");
             }
         }
     }
@@ -127,18 +122,23 @@ public class puzzleGraphics extends JFrame implements ActionListener {
         for (int i = 0; i < buttons.length; i++) {
             if (i == 0) {
                 buttons[i] = new JButton("");
-                buttons[i].setSize(50, 50);
-                buttons[i].setBackground(Color.darkGray);
+                buttons[i].setSize(65, 70);
+                buttons[i].setForeground(Color.darkGray);
                 buttons[i].setFont(new Font("Tahoma", Font.PLAIN, 25));
             } else
                 buttons[i] = new JButton(String.valueOf(i));
-            buttons[i].setSize(50, 50);
+            buttons[i].setSize(65, 70);
+            buttons[i].setForeground(Color.darkGray);
             buttons[i].setFont(new Font("Tahoma", Font.PLAIN, 25));
             buttons[i].addActionListener(this);
         }
         for (int i = 0; i < buttonOrder.length; i++) {
             gamePanel.add(buttons[buttonOrder[i]]);
         }
+        setFrame();
+    }
+
+    private void setFrame() {
         frame.setTitle("Game of 15");
         frame.setVisible(true);
         frame.setSize(460, 350);
