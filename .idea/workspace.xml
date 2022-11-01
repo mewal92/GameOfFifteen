@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d1902e8d-60ee-4ae2-ad0d-1d6bf0ba7185" name="Changes" comment="initial">
-      <change beforePath="$PROJECT_DIR$/src/puzzleGraphics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/puzzleGraphics.java" afterDir="false" />
-    </list>
+    <list default="true" id="d1902e8d-60ee-4ae2-ad0d-1d6bf0ba7185" name="Changes" comment="initial" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
