@@ -87,11 +87,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.main" />
         <item itemvalue="Application.puzzleGraphics" />
+        <item itemvalue="Application.main" />
         <item itemvalue="Application.gameGrid" />
         <item itemvalue="Application.gameButtons" />
-        <item itemvalue="Application.main" />
+        <item itemvalue="Application.puzzleGraphics" />
       </list>
     </recent_temporary>
   </component>

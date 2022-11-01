@@ -37,7 +37,7 @@ public class puzzleGraphics extends JFrame implements ActionListener {
         testMode.addActionListener(this);
 
         try {
-            img = ImageIO.read(new File("bk3.jpg"));
+            img = ImageIO.read(new File("resources/bk3.jpg"));
             frame.setContentPane(new JLabel(new ImageIcon(img)));
             frame.setLayout(new FlowLayout());
             frame.getContentPane().add(gamePanel);
