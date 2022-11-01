@@ -34,7 +34,7 @@ public class puzzleGraphics extends JFrame implements ActionListener {
         testMode.addActionListener(this);
 
         try {
-            img = ImageIO.read(new File("bk.jpg"));
+            img = ImageIO.read(new File("resources/bk.jpg"));
             frame.setContentPane(new JLabel(new ImageIcon(img)));
             frame.setLayout(new FlowLayout());
             frame.getContentPane().add(gamePanel);
@@ -50,6 +50,8 @@ public class puzzleGraphics extends JFrame implements ActionListener {
             gamePanel.setBorder(new SoftBevelBorder(1, Color.blue, Color.gray));
             gamePanel.setSize(400, 400);
             gamePanel.setLayout(new GridLayout(4, 4));
+
+            testMode.setOpaque(false);
 
             getButtons();
 
@@ -123,7 +125,7 @@ public class puzzleGraphics extends JFrame implements ActionListener {
             if (i == 0) {
                 buttons[i] = new JButton("");
                 buttons[i].setSize(65, 70);
-                buttons[i].setForeground(Color.darkGray);
+                buttons[i].setBackground(Color.darkGray);
                 buttons[i].setFont(new Font("Tahoma", Font.PLAIN, 25));
             } else
                 buttons[i] = new JButton(String.valueOf(i));
