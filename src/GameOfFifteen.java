@@ -1,18 +1,17 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.plaf.metal.MetalBorders;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
-public class puzzleGraphics extends JFrame implements ActionListener {
+public class GameOfFifteen extends JFrame implements ActionListener {
 
     private BufferedImage img;
     JPanel gamePanel;
@@ -21,12 +20,10 @@ public class puzzleGraphics extends JFrame implements ActionListener {
     JButton[] buttons;
     JToggleButton testMode;
     JPanel bottomPanel;
-    Shuffle shuffle = new Shuffle();
-    int[] buttonOrder;
+    int[] buttonOrder = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 0, 15};
 
 
-    puzzleGraphics(int[] input) {
-        buttonOrder = input;
+    GameOfFifteen() {
         frame = new JFrame();
         gamePanel = new JPanel();
         bottomPanel = new JPanel();
@@ -67,21 +64,24 @@ public class puzzleGraphics extends JFrame implements ActionListener {
         String action = ae.getActionCommand();
         if (action == "Nytt Spel") {
             gamePanel.removeAll();
-                buttonOrder = shuffle.shuffle(buttonOrder);
-                getButtons();
-                repaint();
-            }else if (action == "Test mode"){
+            buttonOrder = shuffle(buttonOrder);
+            getButtons();
+            repaint();
+        } else if (action == "Test mode") {
             gamePanel.removeAll();
-                int[] testArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 0, 15};
-                buttonOrder = testArray;
-                getButtons();
-                repaint();
-            }
-
+            int[] testArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 0, 15};
+            buttonOrder = testArray;
+            getButtons();
+            repaint();
+        }
         JButton source;
         if (action != "Nytt Spel" && action != "Test mode") {
             source = (JButton) ae.getSource();
+            buttonMovements(source);
+        }
+    }
 
+        private void buttonMovements(JButton source) {
             int index = 0;
             int count = 0;
             for (int i = 0; i < buttons.length; i++) {
@@ -120,7 +120,7 @@ public class puzzleGraphics extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Grattis, du vann!");
             }
         }
-    }
+
 
     private void getButtons() {
         gamePanel.removeAll();
@@ -143,10 +143,26 @@ public class puzzleGraphics extends JFrame implements ActionListener {
         setFrame();
     }
 
+    int[] shuffle(int[] intArray){
+
+        ArrayList<Integer> integerArrayList = new ArrayList<Integer>();
+        for (int i = 0; i < intArray.length; i++) {
+            integerArrayList.add(intArray[i]);
+        }
+        Collections.shuffle(integerArrayList);
+        for (int i = 0; i < intArray.length; i++) {
+            int i1 = integerArrayList.get(i);
+            intArray[i] = i1;
+        }
+        return intArray;
+    }
+
+
     private void setFrame() {
         frame.setTitle("Game Of Fifteen");
         frame.setVisible(true);
         frame.setSize(460, 320);
+        frame.setResizable(false);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
     }

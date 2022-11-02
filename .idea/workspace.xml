@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d1902e8d-60ee-4ae2-ad0d-1d6bf0ba7185" name="Changes" comment="Changed checkbox to togglebutton for testgame">
-      <change afterPath="$PROJECT_DIR$/bk2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bk3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bk4.jpg" afterDir="false" />
+    <list default="true" id="d1902e8d-60ee-4ae2-ad0d-1d6bf0ba7185" name="Changes" comment="Changed background, button and padding on gamepanel">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shuffle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/puzzleGraphics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/puzzleGraphics.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,11 +22,10 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="initialGraphics" />
+        <entry key="$PROJECT_DIR$" value="development_1" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -43,20 +41,10 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/melin/IdeaProjects/GameOfFifteen&quot;
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\melin\IdeaProjects\GameOfFifteen" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.main">
+  <component name="RunManager">
     <configuration name="gameButtons" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gameButtons" />
       <module name="GameOfFifteen" />
@@ -91,7 +79,7 @@
         <item itemvalue="Application.main" />
         <item itemvalue="Application.gameGrid" />
         <item itemvalue="Application.gameButtons" />
-        <item itemvalue="Application.puzzleGraphics" />
+        <item itemvalue="Application.main" />
       </list>
     </recent_temporary>
   </component>
@@ -104,25 +92,6 @@
       <option name="presentableId" value="Default" />
       <updated>1666970483243</updated>
     </task>
-    <task id="LOCAL−00001" summary="initial">
-      <created>1667080335212</created>
-      <option name="number" value="LOCAL−00001" />
-      <option name="presentableId" value="LOCAL−00001" />
-      <updated>1667080335212</updated>
-    </task>
-    <task id="LOCAL−00002" summary="Code cleanup">
-      <created>1667232852689</created>
-      <option name="number" value="LOCAL−00002" />
-      <option name="presentableId" value="LOCAL−00002" />
-      <updated>1667232852689</updated>
-    </task>
-    <task id="LOCAL−00003" summary="Changed checkbox to togglebutton for testgame">
-      <created>1667291236355</created>
-      <option name="number" value="LOCAL−00003" />
-      <option name="presentableId" value="LOCAL−00003" />
-      <updated>1667291236355</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -135,11 +104,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="initial" />
-    <MESSAGE value="Code cleanup" />
-    <MESSAGE value="Changed checkbox to togglebutton for testgame" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed checkbox to togglebutton for testgame" />
   </component>
 </project>
